@@ -45,15 +45,12 @@ rebar3 文件rebar.config添加依赖
 
 2. mongo_client_test
     测试 yymg_mongo_client_mgr 接口
-   
-   > Database = <<"test">>.
-   > {ok, Connection} = mc_worker_api:connect ([{database, Database}]).
 
 ### 主要模块
 
 1. client 目录， mongo客户端，OP_MSG的实现，可以基于 client 做自己的连接池。
-    模块接口 yymg_mongo_client_mgr
-    OP_MSG编解码实现 yymg_mongo_client_proto
+   
+   模块接口 yymg_mongo_client_mgr OP_MSG编解码实现 yymg_mongo_client_proto
    
    
 
@@ -71,4 +68,8 @@ rebar3 文件rebar.config添加依赖
 
 4. 使用接口
    
-   yymg_mongo_api，使用方法参考测试用例  mongo_api_test
+   yymg_mongo_api，使用方法参考测试用例 mongo_api_test
+   
+   
+   
+   
