@@ -54,16 +54,16 @@ rebar3 文件rebar.config添加依赖
 1. client 目录， mongo客户端，OP_MSG的实现，可以基于 client 做自己的连接池。
     模块接口 yymg_mongo_client_mgr
     OP_MSG编解码实现 yymg_mongo_client_proto
+   
+   
 
-2. 
-
-3. cursor 目录，游标管理，实现分批查询。
+2. cursor 目录，游标管理，实现分批查询。
    
    模块接口 gs_yymg_mongo_cursor_mgr
    
    
 
-4. pool 目录，基于poolboy的连接池实现。
+3. pool 目录，基于poolboy的连接池实现。
    
    模块接口 yymg_mongo_poolboy_mgr
    
