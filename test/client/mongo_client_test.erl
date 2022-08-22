@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 -module(mongo_client_test).
 -author("yinye").
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -42,7 +42,7 @@ stop({Socket,_McCfg,_NextReqId}) ->
 
 
 new_conn()->
-  McCfg = yymg_mongo_client_cfg:new_auth_cfg("192.168.43.27", 27017,<<"test_db">>,30000,{"mongo-admin", "mgadmin@123456"}),
+  McCfg = yymg_mongo_client_cfg:new_auth_cfg("192.168.43.29", 27017,<<"test_db">>,30000,{"mongo-admin", "mgadmin@123456"}),
   {Socket,NextReqId} = yymg_mongo_client_mgr:new_conn(McCfg),
   {Socket,McCfg,NextReqId}.
 
@@ -125,7 +125,7 @@ priv_to_selectMap_updateMap_List([],AccList)->
   lists:reverse(AccList).
 
 priv_to_selectMap_updateMap(Item)->
-  Id = yymg_map:get_value('_id',Item),
+  Id = yyu_map:get_value('_id',Item),
   SelectMap = #{'_id'=>Id},
   {SelectMap,Item}.
 

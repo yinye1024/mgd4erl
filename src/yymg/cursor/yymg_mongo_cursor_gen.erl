@@ -10,8 +10,8 @@
 -author("yinye").
 
 -behavior(gen_server).
--include("utils/gs/yymg_gs.hrl").
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_gs.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 -define(SERVER,?MODULE).
 
@@ -75,7 +75,7 @@ handle_info(Msg,State)->
 %% ===================================================================================
 do_handle_call(Msg,State)->
   Reply =
-    case yymg_fun:call_do_fun(Msg) of
+    case yyu_fun:call_do_fun(Msg) of
       ?UNKNOWN -> ?LOG_WARNING({"unknown info fun",[Msg]}),
         ?UNKNOWN;
       Result->Result
@@ -85,7 +85,7 @@ do_handle_call(Msg,State)->
 do_handle_cast({stop},State)->
   {?STOP,?NORMAL,State};
 do_handle_cast(Msg,State)->
-  case yymg_fun:cast_do_fun(Msg) of
+  case yyu_fun:cast_do_fun(Msg) of
     ?UNKNOWN -> ?LOG_WARNING({"unknown info fun",[Msg]});
     _->?OK
   end,
@@ -96,7 +96,7 @@ do_handle_info({loop_tick},State)->
   erlang:send_after(?GEN_TICK_SPAN,self(),{loop_tick}),
   {?NO_REPLY,State};
 do_handle_info(Msg,State)->
-  case yymg_fun:info_do_fun(Msg) of
+  case yyu_fun:info_do_fun(Msg) of
     ?UNKNOWN -> ?LOG_WARNING({"unknown info fun",[Msg]});
     _->?OK
   end,

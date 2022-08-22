@@ -9,7 +9,7 @@
 -module(yymg_mongo_cursor_mgr).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined
@@ -46,7 +46,7 @@ get_last_req()->
 %% 更新最后一次请求时间，超过时间没有请求，自动退出进程
 update_last_req()->
   Data = yymg_mongo_cursor_dao:get_data(),
-  NewData = yymg_mongo_cursor_pojo:set_last_req(yymg_time:now_seconds(),Data),
+  NewData = yymg_mongo_cursor_pojo:set_last_req(yyu_time:now_seconds(),Data),
   yymg_mongo_cursor_dao:put_data(NewData),
   ?OK.
 

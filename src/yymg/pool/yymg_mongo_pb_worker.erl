@@ -9,7 +9,7 @@
 -module(yymg_mongo_pb_worker).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined

@@ -9,7 +9,7 @@
 -module(yymg_mongo_cursor_dao).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 -define(DATA_TYPE,?MODULE).
 -define(DATA_ID,1).
@@ -21,15 +21,15 @@
 %% API functions implements
 %% ===================================================================================
 init(PoolId)->
-  yymg_proc_cache_dao:init(?DATA_TYPE),
+  yyu_proc_cache_dao:init(?DATA_TYPE),
   DataPojo = yymg_mongo_cursor_pojo:new_pojo(?DATA_ID, PoolId),
-  yymg_proc_cache_dao:put_data(?DATA_TYPE,?DATA_ID,DataPojo),
+  yyu_proc_cache_dao:put_data(?DATA_TYPE,?DATA_ID,DataPojo),
   ?OK.
 
 put_data(DataPojo)->
-  yymg_proc_cache_dao:put_data(?DATA_TYPE,?DATA_ID,DataPojo),
+  yyu_proc_cache_dao:put_data(?DATA_TYPE,?DATA_ID,DataPojo),
   ?OK.
 
 get_data()->
-  DataPojo = yymg_proc_cache_dao:get_data(?DATA_TYPE,?DATA_ID),
+  DataPojo = yyu_proc_cache_dao:get_data(?DATA_TYPE,?DATA_ID),
   DataPojo.

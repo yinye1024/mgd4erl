@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 -module(mongo_api_test).
 -author("yinye").
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 
@@ -47,7 +47,7 @@ start_suite() ->
   PbPid = priv_new_conn_pool(?PoolId),
   {?PoolId,PbPid}.
 priv_new_conn_pool(PoolId)->
-  McCfg = yymg_mongo_client_cfg:new_auth_cfg("192.168.43.27", 27017,<<"test_db">>,30000,{"mongo-admin", "mgadmin@123456"}),
+  McCfg = yymg_mongo_client_cfg:new_auth_cfg("192.168.43.29", 27017,<<"test_db">>,30000,{"mongo-admin", "mgadmin@123456"}),
   PoolSize = 1,
   PoolPid = yymg_mongo_api:new_pool(PoolId,PoolSize,McCfg),
   PoolPid.

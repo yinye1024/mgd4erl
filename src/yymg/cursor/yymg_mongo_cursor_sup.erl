@@ -10,7 +10,7 @@
 -author("yinye").
 
 -behavior(supervisor).
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 -define(SERVER,?MODULE).
 
 

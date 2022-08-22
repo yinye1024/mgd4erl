@@ -9,7 +9,7 @@
 -module(gs_yymg_mongo_cursor_mgr).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined

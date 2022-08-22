@@ -9,7 +9,7 @@
 -module(yymg_mongo_client_cfg).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined
@@ -37,23 +37,23 @@ new_auth_cfg(Host,Port, DbName,TimeOut,{LoginName,LoginPwd})->
 
 
 get_host(ItemMap) ->
-  yymg_map:get_value(host, ItemMap).
+  yyu_map:get_value(host, ItemMap).
 
 get_port(ItemMap) ->
-  yymg_map:get_value(port, ItemMap).
+  yyu_map:get_value(port, ItemMap).
 
 get_db(ItemMap) ->
-  yymg_map:get_value(db, ItemMap).
+  yyu_map:get_value(db, ItemMap).
 
 get_time_out(ItemMap) ->
-  yymg_map:get_value(time_out, ItemMap).
+  yyu_map:get_value(time_out, ItemMap).
 
 
 get_login_name(ItemMap) ->
-  yymg_map:get_value(login_name, ItemMap).
+  yyu_map:get_value(login_name, ItemMap).
 
 get_login_pwd(ItemMap) ->
-  yymg_map:get_value(login_pwd, ItemMap).
+  yyu_map:get_value(login_pwd, ItemMap).
 
 
 

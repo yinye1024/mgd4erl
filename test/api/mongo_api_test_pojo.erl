@@ -38,24 +38,24 @@ new_one({Id,Name,Age}) ->
   }.
 
 get_name(ItemMap) ->
-  yymg_map:get_value(name, ItemMap).
+  yyu_map:get_value(name, ItemMap).
 
 
 get_age(ItemMap) ->
-  yymg_map:get_value(age, ItemMap).
+  yyu_map:get_value(age, ItemMap).
 
 set_age(Value, ItemMap) ->
-  yymg_map:put_value(age, Value, ItemMap).
+  yyu_map:put_value(age, Value, ItemMap).
 
 
 
 get_ver(ItemMap) ->
-  yymg_map:get_value(ver, ItemMap).
+  yyu_map:get_value(ver, ItemMap).
 
 incr_ver(ItemMap) ->
   NewVer = get_ver(ItemMap)+1,
   priv_set_ver(NewVer,ItemMap).
 
 priv_set_ver(Value, ItemMap) ->
-  yymg_map:put_value(ver, Value, ItemMap).
+  yyu_map:put_value(ver, Value, ItemMap).
 

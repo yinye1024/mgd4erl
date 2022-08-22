@@ -9,7 +9,7 @@
 -module(bs_yymg_mongo_cursor_mgr).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined
@@ -25,7 +25,7 @@ init(PoolId)->
   ?OK.
 
 loop_tick()->
-  ShouldStop = yymg_mongo_cursor_mgr:get_last_req()+?MAX_IDLE_TIME < yymg_time:now_seconds(),
+  ShouldStop = yymg_mongo_cursor_mgr:get_last_req()+?MAX_IDLE_TIME < yyu_time:now_seconds(),
   case ShouldStop of
     ?TRUE ->
       erlang:send_after(0,self(),{stop}),

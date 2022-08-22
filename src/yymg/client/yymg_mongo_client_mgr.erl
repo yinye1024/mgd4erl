@@ -9,7 +9,7 @@
 -module(yymg_mongo_client_mgr).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined
@@ -279,7 +279,7 @@ cursor_next_batch({Socket,McCfg},Collection,ReqId,{CursorId,BatchSize})->
           ?LOG_ERROR({"CursorIdIsZero"}),
           ?OK;
         _Other ->
-          yymg_error:throw_error(db_unknown_error,RespMap)
+          yyu_error:throw_error(db_unknown_error,RespMap)
       end,
       {?OK, []}
   end,

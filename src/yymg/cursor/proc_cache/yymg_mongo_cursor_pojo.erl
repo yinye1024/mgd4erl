@@ -9,7 +9,7 @@
 -module(yymg_mongo_cursor_pojo).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 %% API functions defined
 -export([new_pojo/2,get_id/1]).
@@ -26,11 +26,11 @@ new_pojo(DataId, PoolId)->
     collection => ?NOT_SET,
     cursorId => ?NOT_SET,
     batchSize => ?NOT_SET,
-    last_req => yymg_time:now_seconds()    %% 上一次请求时间
+    last_req => yyu_time:now_seconds()    %% 上一次请求时间
   }.
 
 get_id(ItemMap) ->
-  yymg_map:get_value(id, ItemMap).
+  yyu_map:get_value(id, ItemMap).
 
 
 set_batch_info({Collection,CursorId,BatchSize},ItemMap)->
@@ -41,20 +41,20 @@ set_batch_info({Collection,CursorId,BatchSize},ItemMap)->
   }.
 
 get_poolId(ItemMap) ->
-  yymg_map:get_value(poolId, ItemMap).
+  yyu_map:get_value(poolId, ItemMap).
 
 get_collection(ItemMap) ->
-  yymg_map:get_value(collection, ItemMap).
+  yyu_map:get_value(collection, ItemMap).
 
 get_batchSize(ItemMap) ->
-  yymg_map:get_value(batchSize, ItemMap).
+  yyu_map:get_value(batchSize, ItemMap).
 
 get_cursorId(ItemMap) ->
-  yymg_map:get_value(cursorId, ItemMap).
+  yyu_map:get_value(cursorId, ItemMap).
 
 get_last_req(ItemMap) ->
-  yymg_map:get_value(last_req, ItemMap).
+  yyu_map:get_value(last_req, ItemMap).
 
 set_last_req(Value, ItemMap) ->
-  yymg_map:put_value(last_req, Value, ItemMap).
+  yyu_map:put_value(last_req, Value, ItemMap).
 

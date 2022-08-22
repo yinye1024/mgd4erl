@@ -8,7 +8,7 @@
 -module(yymg_mongo_client_auth_helper).
 -author("yinye").
 -include_lib("bson/include/bson_binary.hrl").
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 -define(NOT_MASTER_ERROR, 13435).

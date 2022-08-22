@@ -9,7 +9,7 @@
 -module(yymg_mongo_api).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 
 %% API functions defined
@@ -65,7 +65,7 @@ priv_to_selectMap_updateMap_List([],AccList)->
   lists:reverse(AccList).
 
 priv_to_selectMap_updateMap(Item)->
-  Id = yymg_map:get_value('_id',Item),
+  Id = yyu_map:get_value('_id',Item),
   SelectMap = #{'_id'=>Id},
   {SelectMap,Item}.
 
@@ -94,7 +94,7 @@ incr_and_get_autoId(PoolId,AutoName) when is_atom(AutoName)->
   QueryMap = #{'_id'=>AutoName},
   UpdateMap = {'$inc',{'seq',1}},
   {?OK,NewItem} = find_and_modify(PoolId,{Collection, QueryMap,UpdateMap}),
-  AutoId = yymg_map:get_value(<<"seq">>,NewItem),
+  AutoId = yyu_map:get_value(<<"seq">>,NewItem),
   AutoId.
 
 find_and_modify(PoolId,{Collection, QueryMap,UpdateMap})->
@@ -149,8 +149,8 @@ priv_convert_list_to_db([],AccList) ->
 priv_convert_item_to_db(Map) when is_map(Map)->
   maps:fold(fun(Key,Value,AccMap)->
               NewKey = priv_key_fixed(Key),
-              yymg_map:put_value(NewKey, priv_convert_item_to_db(Value),AccMap)
-            end, yymg_map:new_map(), Map);
+              yyu_map:put_value(NewKey, priv_convert_item_to_db(Value),AccMap)
+            end, yyu_map:new_map(), Map);
 priv_convert_item_to_db(List) when is_list(List)->
   lists:map(fun(Elem)->
     priv_convert_item_to_db(Elem)
@@ -162,7 +162,7 @@ priv_key_fixed(Key) when is_atom(Key)->
 priv_key_fixed(Key) when is_integer(Key)->
   integer_to_binary(Key);
 priv_key_fixed(Key) ->
-  yymg_error:throw_error({"map key should be atom or integer",Key}).
+  yyu_error:throw_error({"map key should be atom or integer",Key}).
 
 
 
@@ -182,8 +182,8 @@ priv_convert_item_from_db(Map) when is_map(Map)->
                {'EXIT',{badarg,_R}} -> binary_to_atom(Key,utf8);
                IntKey -> IntKey
              end,
-    yymg_map:put_value(NewKey, priv_convert_item_from_db(Value),AccMap)
-            end, yymg_map:new_map(), Map);
+    yyu_map:put_value(NewKey, priv_convert_item_from_db(Value),AccMap)
+            end, yyu_map:new_map(), Map);
 priv_convert_item_from_db(List) when is_list(List)->
   lists:map(fun(Elem)->
     priv_convert_item_from_db(Elem)

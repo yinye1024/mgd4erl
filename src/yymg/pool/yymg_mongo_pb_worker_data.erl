@@ -9,7 +9,7 @@
 -module(yymg_mongo_pb_worker_data).
 -author("yinye").
 
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 -define(MAX_REQ_ID,65535).
 -define(MAX_FAIL_COUNT,5).
 
@@ -38,21 +38,21 @@ incr_and_get_req_id(ItemMap)->
   {NewReqId,NewItemMap}.
 
 get_req_id(ItemMap) ->
-  yymg_map:get_value(req_id, ItemMap).
+  yyu_map:get_value(req_id, ItemMap).
 
 priv_set_req_id(Value, ItemMap) ->
-  yymg_map:put_value(req_id, Value, ItemMap).
+  yyu_map:put_value(req_id, Value, ItemMap).
 
 
 get_socket(ItemMap) ->
-  yymg_map:get_value(socket, ItemMap).
+  yyu_map:get_value(socket, ItemMap).
 
 init_socket(Socket, NextReqId,ItemMap) ->
-  ItemMap_1 = yymg_map:put_value(socket, Socket, ItemMap),
+  ItemMap_1 = yyu_map:put_value(socket, Socket, ItemMap),
   priv_set_req_id(NextReqId,ItemMap_1).
 
 get_conn_cfg(ItemMap) ->
-  yymg_map:get_value(conn_cfg, ItemMap).
+  yyu_map:get_value(conn_cfg, ItemMap).
 
 
 reset_ping_count(ItemMap) ->
@@ -63,10 +63,10 @@ incr_ping_fail(ItemMap)->
   priv_set_ping_fail_count(NewCount, ItemMap).
 
 get_ping_fail_count(ItemMap) ->
-  yymg_map:get_value(ping_fail_count, ItemMap).
+  yyu_map:get_value(ping_fail_count, ItemMap).
 
 priv_set_ping_fail_count(Value, ItemMap) ->
-  yymg_map:put_value(ping_fail_count, Value, ItemMap).
+  yyu_map:put_value(ping_fail_count, Value, ItemMap).
 
 is_down(ItemMap) ->
   get_ping_fail_count(ItemMap) > ?MAX_FAIL_COUNT.

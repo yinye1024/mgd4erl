@@ -7,7 +7,7 @@
 %%%-------------------------------------------------------------------
 -module(yymg_mongo_client_auth_logic).
 -author("yinye").
--include("yymg_comm.hrl").
+-include_lib("yyutils/include/yyu_comm.hrl").
 
 -define(RANDOM_LENGTH, 24).
 -define(GS2_HEADER, <<"n,,">>).
