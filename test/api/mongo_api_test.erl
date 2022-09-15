@@ -21,6 +21,7 @@
 %% API functions implements
 %% ===================================================================================
 api_test_() ->
+  yyu_logger:start(),
   [{setup,
     fun start_suite/0,
     fun stop_suite/1,
