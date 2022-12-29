@@ -18,7 +18,7 @@
           update/2,bulk_update/2,update_selection/2,
           delete/2,batch_delete/2]).
 -export([find_one/2,find_list/2,incr_and_get_autoId/2,find_and_modify/2]).
--export([get_count/2,find_batch/2,next_batch/1, close/1]).
+-export([get_count/2,find_batch/2,next_batch/1, close_batch/1]).
 
 %% ===================================================================================
 %% API functions implements
@@ -75,10 +75,10 @@ update_selection(PoolId,{Collection, SelectMap,UpdateMap})->
   ?OK.
 
 %% 无大小限制
-bulk_update(PoolId,{Collection,ItemList,_IsUpsert}) when is_list(ItemList)->
+bulk_update(PoolId,{Collection,ItemList, IsUpsert}) when is_list(ItemList)->
   ItemList_1 = priv_convert_list_to_db(ItemList),
   SelectedUpdateMapList = priv_to_selectMap_updateMap_List(ItemList_1,[]),
-  yymg_mongo_poolboy_mgr:bulk_update(PoolId,{Collection,SelectedUpdateMapList,_IsUpsert}),
+  yymg_mongo_poolboy_mgr:bulk_update(PoolId,{Collection,SelectedUpdateMapList, IsUpsert}),
   ?OK.
 
 delete(PoolId,{Collection, SelectorMap}) when is_map(SelectorMap)->
@@ -131,7 +131,7 @@ next_batch(CursorPid)->
   {Result, NextBatch} = gs_yymg_mongo_cursor_mgr:next_batch(CursorPid),
   {Result, priv_conver_list_from_db(NextBatch)}.
 
-close(CursorPid)->
+close_batch(CursorPid)->
   gs_yymg_mongo_cursor_mgr:close(CursorPid),
   ?OK.
 %% ==================== 批量查找 要管理好 cursorId (结束)==========================================

@@ -129,7 +129,7 @@ cursor_find_batch({PoolId,Collection})->
   {CursorPid,FirstBatchList} = yymg_mongo_api:find_batch(PoolId,{Collection,{QueryMap,Projector,Skip,BatchSize}}),
   {?OK,NextBatchList_1} = yymg_mongo_api:next_batch(CursorPid),
   {?OK,NextBatchList_2} = yymg_mongo_api:next_batch(CursorPid),
-  yymg_mongo_api:close(CursorPid),
+  yymg_mongo_api:close_batch(CursorPid),
 
   [
     ?_assertMatch(TotalSize,TotalCount),
