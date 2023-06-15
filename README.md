@@ -31,12 +31,14 @@ rebar3 文件rebar.config添加依赖
 ### 测试用例
 
 1. 对应修改测试用例的数据库链接地址和端口，
-2. 跑用例
-    修改 mongo_api_test 和 mongo_client_test 的数据库连接信息
+2. 跑用例 
+   修改 mongo_api_test 和 mongo_client_test 的数据库连接信息
 
-    > rebar3 eunit
-    > rebar3 eunit --module=mongo_api_test
-    > rebar3 eunit --module=mongo_client_test
+  > rebar3 eunit 
+  > 
+  > rebar3 eunit --module=mongo_api_test
+  > 
+  > rebar3 eunit --module=mongo_client_test
 
 ### 如何使用
 
