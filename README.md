@@ -32,6 +32,7 @@ rebar3 文件rebar.config添加依赖
 
 1. 对应修改测试用例的数据库链接地址和端口，
 2. 跑用例
+    修改 mongo_api_test 和 mongo_client_test 的数据库连接信息
 
     > rebar3 eunit
     > rebar3 eunit --module=mongo_api_test
@@ -51,7 +52,8 @@ rebar3 文件rebar.config添加依赖
 
 1. client 目录， mongo客户端，OP_MSG的实现，可以基于 client 做自己的连接池。
    
-   模块接口 yymg_mongo_client_mgr OP_MSG编解码实现 yymg_mongo_client_proto
+   模块接口 yymg_mongo_client_mgr
+   OP_MSG编解码实现 yymg_mongo_client_proto
    
    
 
