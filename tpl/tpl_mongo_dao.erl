@@ -6,7 +6,7 @@
 %%% @end
 %%% Created : 25. 四月 2021 19:45
 %%%-------------------------------------------------------------------
--module(yymg_mongo_dao).
+-module(tpl_mongo_dao).
 -author("yinye").
 
 -include_lib("yyutils/include/yyu_comm.hrl").

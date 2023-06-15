@@ -30,7 +30,8 @@ rebar3 文件rebar.config添加依赖
 
 ### 测试用例
 
-对应修改测试用例的数据库链接地址和端口，跑用例
+1. 对应修改测试用例的数据库链接地址和端口，
+2. 跑用例
 
     > rebar3 eunit
     > rebar3 eunit --module=mongo_api_test
@@ -56,20 +57,18 @@ rebar3 文件rebar.config添加依赖
 
 2. cursor 目录，游标管理，实现分批查询。
    
-   模块接口 gs_yymg_mongo_cursor_mgr
-   
+   模块接口 gs_yymg_mongo_cursor_mgr   
    
 
 3. pool 目录，基于poolboy的连接池实现。
    
-   模块接口 yymg_mongo_poolboy_mgr
-   
+   模块接口 yymg_mongo_poolboy_mgr  
    
 
 4. 使用接口
    
-   yymg_mongo_api，使用方法参考测试用例 mongo_api_test
-   
+   yymg_mongo_api，使用方法参考测试用例 test/api/mongo_api_test
+   使用规范 参考 tpl/tpl_mongo_dao
    
    
    
