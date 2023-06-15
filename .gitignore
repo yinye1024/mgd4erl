@@ -15,3 +15,6 @@ deps
 .rebar3
 _build/
 _checkouts/
+log/crash.log
+log/error.log
+log/info.log
