@@ -18,3 +18,4 @@ _checkouts/
 log/crash.log
 log/error.log
 log/info.log
+ebin/mgd4erl.app
