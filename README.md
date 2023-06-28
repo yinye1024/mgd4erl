@@ -2,7 +2,7 @@ erlang 的 mongodb 驱动, 基于 OP_MSG 协议, 支持 bulk write, cursor，***
 
 ## 功能
 
-1. 基于 OP_MSG  mongo 版本 3.6+
+1. 基于 OP_MSG  mongodb 版本 3.6+
 
 2. 支持 
 
